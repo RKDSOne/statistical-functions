@@ -1,6 +1,6 @@
 from math import *
 
-#mesos oros
+#average
 def mean_avg(X):
     n=len(X)
     sum=0
@@ -8,7 +8,7 @@ def mean_avg(X):
         sum=sum+X[i]
     return float(sum)/n
 
-#diakumansi
+#Variance
 def variance(X):
     n=len(X)
     sum=0
@@ -18,15 +18,15 @@ def variance(X):
 
     return float(sum)/n
 
-#tupiki apoklisi
+#Divergence
 def divergence(X):
     return sqrt(variance(X))
 
-#sunithestero stoixeio se lista
+#Most common value in a list
 def most_common(lst):
     return max(set(lst), key=lst.count)
 
-#diamesos
+#Median value
 #python is zero based, so for median calculation we check (n/2 -1)th and (n/2)th elements for even crowd, and (n/2 -1)th element for odd crowd
 def median(X):
     X.sort()
@@ -39,14 +39,14 @@ def median(X):
         elem2=(n/2)
         return float((X[elem1]+X[elem2]))/2
 
-#suntelestis asummetrias
+#Asymmetry Coefficient calculation
 def asymmetry_coefficient(X):
     avg=mean_avg(X)
     s=divergence(X)
     delta=median(X)
     return 3*(avg-delta)/(s)
 
-#suntelestis kurtotitas
+#Curvature_ Cefficient calculation 
 def curvature_coefficient(X):
     s=divergence(X)
     n=len(X)
@@ -73,6 +73,7 @@ X8=[200,240,250,215,199,201,171,176,215,220,
 
 
 print 'crowd: ', len(X8)
+print 'most common value: ', most_common(X8)
 print 'average: ', mean_avg(X8)
 print 'Variance: ',variance(X8)
 print 'Divergence: ', divergence(X8)
